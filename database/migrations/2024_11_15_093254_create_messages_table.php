@@ -18,10 +18,12 @@ return new class extends Migration
             $table->foreignId('conversation_id')
                 ->constrained('conversations')
                 ->cascadeOnDelete();
+
             $table->foreignId('user_id')
                 ->nullable()
                 ->constrained('users')
                 ->nullOnDelete();
+
             $table->text('body');
             $table->enum('type', ['text', 'attachment'])
                 ->default('text');

@@ -11,7 +11,8 @@ class Conversation extends Model
     protected $fillable = [
         'user_id',
         'labal',
-        'last_message_id'
+        'last_message_id',
+        'type'
     ];
     public function participants()
     {
@@ -22,7 +23,7 @@ class Conversation extends Model
     }
     public function messages()
     {
-        return $this->hasMany(message::class,'coversation_id','id')->latest();
+        return $this->hasMany(message::class,'conversation_id','id')->latest();
     }
     public function user()
     {
