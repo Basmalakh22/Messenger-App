@@ -41,4 +41,22 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function conversations()
+    {
+        return $this->belongsToMany(Conversation::class,'participants')->withPivot([
+            'joined_at',
+            'role'
+        ]);
+    }
+    public function sentMessages()
+    {
+        return $this->hasMany(message::class,'user_id','id');
+    }
+    public function receivedMessages()
+    {
+        return $this->belongsToMany(message::class,'participants')->withPivot([
+            'read_at',
+            'deleted_at'
+        ]);
+    }
 }
