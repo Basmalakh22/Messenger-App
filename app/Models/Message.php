@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class message extends Model
+class Message extends Model
 {
     use HasFactory, SoftDeletes;
     protected $fillable = [
@@ -21,7 +21,7 @@ class message extends Model
     }
     public function user()
     {
-        return $this->belongsToMany(User::class)->withDefault([
+        return $this->belongsTo(User::class)->withDefault([
             'name' => __('User'),
         ]);
     }

@@ -23,7 +23,7 @@ class Conversation extends Model
     }
     public function messages()
     {
-        return $this->hasMany(message::class,'conversation_id','id')->latest();
+        return $this->hasMany(message::class,'conversation_id','id');
     }
     public function user()
     {
