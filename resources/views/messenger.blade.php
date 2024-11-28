@@ -175,6 +175,7 @@
 
         <!-- Navigation -->
 
+
         <!-- Sidebar -->
         <aside class="sidebar bg-light">
             <div class="tab-content h-100" role="tablist">
@@ -769,15 +770,15 @@
                                     @endphp
                                     @foreach ($friends as $friend)
                                         @php
-                                            $letter = substr($friend->name,0,1);
+                                            $letter = substr($friend->name, 0, 1);
                                         @endphp
                                         @if ($letter != $last_latter)
-                                        <div class="my-5">
-                                            <small class="text-uppercase text-muted">{{ $letter }}</small>
-                                        </div>
+                                            <div class="my-5">
+                                                <small class="text-uppercase text-muted">{{ $letter }}</small>
+                                            </div>
                                         @endif
                                         @php
-                                        $last_latter = $letter
+                                            $last_latter = $letter;
                                         @endphp
                                         <!-- Card -->
                                         <div class="card border-0">
@@ -786,7 +787,8 @@
                                                 <div class="row align-items-center gx-5">
                                                     <div class="col-auto">
                                                         <a href="#" class="avatar ">
-                                                            <img class="avatar-img" src="{{ $friend->avatar_url }}" alt="">
+                                                            <img class="avatar-img" src="{{ $friend->avatar_url }}"
+                                                                alt="">
                                                         </a>
                                                     </div>
 
@@ -881,37 +883,40 @@
 
                                 <!-- Chats -->
                                 @foreach ($chats as $chat)
-                                <div class="card-list">
-                                    <!-- Card -->
-                                    <a href="{{ route('messenger',$chat->id) }}" class="card border-0 text-reset">
-                                        <div class="card-body">
-                                            <div class="row gx-5">
-                                                <div class="col-auto">
-                                                    <div class="avatar avatar-online">
-                                                        <span class="avatar-text">{{ strtoupper(substr($chat->participants[0]->name,0,1)) }}</span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col">
-                                                    <div class="d-flex align-items-center mb-3">
-                                                        <h5 class="me-auto mb-0">{{ $chat->participants[0]->name }}</h5>
-                                                        <span class="text-muted extra-small ms-2">{{ $chat->lastMessage->created_at->diffForHumans() }}</span>
+                                    <div class="card-list">
+                                        <!-- Card -->
+                                        <a href="{{ route('messenger', $chat->id) }}" class="card border-0 text-reset">
+                                            <div class="card-body">
+                                                <div class="row gx-5">
+                                                    <div class="col-auto">
+                                                        <div class="avatar avatar-online">
+                                                            <span
+                                                                class="avatar-text">{{ strtoupper(substr($chat->participants[0]->name, 0, 1)) }}</span>
+                                                        </div>
                                                     </div>
 
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="line-clamp me-auto">
-                                                            {{ Str::words($chat->lastMessage->body,20) }}
+                                                    <div class="col">
+                                                        <div class="d-flex align-items-center mb-3">
+                                                            <h5 class="me-auto mb-0">{{ $chat->participants[0]->name }}
+                                                            </h5>
+                                                            <span
+                                                                class="text-muted extra-small ms-2">{{ $chat->lastMessage->created_at->diffForHumans() }}</span>
+                                                        </div>
+
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="line-clamp me-auto">
+                                                                {{ Str::words($chat->lastMessage->body, 20) }}
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div><!-- .card-body -->
-                                    </a>
-                                    <!-- Card -->
+                                            </div><!-- .card-body -->
+                                        </a>
+                                        <!-- Card -->
 
-                                    
-                                </div>
-                                <!-- Chats -->
+
+                                    </div>
+                                    <!-- Chats -->
                                 @endforeach
                             </div>
 
@@ -1036,8 +1041,7 @@
                                                         class="btn btn-sm btn-soft-primary w-100">Hide</a>
                                                 </div>
                                                 <div class="col">
-                                                    <a href="#"
-                                                        class="btn btn-sm btn-primary w-100">Confirm</a>
+                                                    <a href="#" class="btn btn-sm btn-primary w-100">Confirm</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -1097,12 +1101,10 @@
                                                         <div class="me-auto">You win 5GB free disk space.</div>
 
                                                         <div class="dropdown ms-5">
-                                                            <a class="icon text-muted" href="#"
-                                                                role="button" data-bs-toggle="dropdown"
-                                                                aria-expanded="false">
-                                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24" height="24"
-                                                                    viewBox="0 0 24 24" fill="none"
+                                                            <a class="icon text-muted" href="#" role="button"
+                                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                    height="24" viewBox="0 0 24 24" fill="none"
                                                                     stroke="currentColor" stroke-width="2"
                                                                     stroke-linecap="round" stroke-linejoin="round"
                                                                     class="feather feather-more-horizontal">
@@ -1189,12 +1191,10 @@
                                                             successfully.</div>
 
                                                         <div class="dropdown ms-5">
-                                                            <a class="icon text-muted" href="#"
-                                                                role="button" data-bs-toggle="dropdown"
-                                                                aria-expanded="false">
-                                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24" height="24"
-                                                                    viewBox="0 0 24 24" fill="none"
+                                                            <a class="icon text-muted" href="#" role="button"
+                                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                    height="24" viewBox="0 0 24 24" fill="none"
                                                                     stroke="currentColor" stroke-width="2"
                                                                     stroke-linecap="round" stroke-linejoin="round"
                                                                     class="feather feather-more-horizontal">
@@ -1274,9 +1274,8 @@
                                                         <div class="me-auto">Updated profile picture.</div>
 
                                                         <div class="dropdown ms-5">
-                                                            <a class="icon text-muted" href="#"
-                                                                role="button" data-bs-toggle="dropdown"
-                                                                aria-expanded="false">
+                                                            <a class="icon text-muted" href="#" role="button"
+                                                                data-bs-toggle="dropdown" aria-expanded="false">
                                                                 <svg xmlns="http://www.w3.org/2000/svg"
                                                                     width="24" height="24"
                                                                     viewBox="0 0 24 24" fill="none"
@@ -2275,8 +2274,8 @@
                                             </div>
 
                                             <div class="col overflow-hidden">
-                                                <h5 class="text-truncate">Bootstrap Community</h5>
-                                                <p class="text-truncate">35 members, 3 online</p>
+                                                <h5 class="text-truncate">Ollie Chandler</h5>
+                                                <p class="text-truncate">is typing<span class='typing-dots'><span>.</span><span>.</span><span>.</span></span></p>
                                             </div>
                                         </div>
                                     </div>
@@ -2390,132 +2389,140 @@
                     <!-- Chat: Content -->
                     <div class="chat-body hide-scrollbar flex-1 h-100">
                         <div class="chat-body-inner">
-                            <div class="py-6 py-lg-12">
+                            <div class="py-6 py-lg-12" id="chat-body">
 
                                 @foreach ($messages as $message)
-                                <!-- Message -->
-                                <div class="message @if($message->user_id == Auth::id()) message-out @endif ">
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#modal-profile"
-                                        class="avatar avatar-responsive">
-                                        <img class="avatar-img" src="{{$message->user->avatar_url}}" alt="">
-                                    </a>
+                                    <!-- Message -->
+                                    <div class="message @if ($message->user_id == Auth::id()) message-out @endif ">
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#modal-profile"
+                                            class="avatar avatar-responsive">
+                                            <img class="avatar-img" src="{{ $message->user->avatar_url }}"
+                                                alt="">
+                                        </a>
 
-                                    <div class="message-inner">
-                                        <div class="message-body">
-                                            <div class="message-content">
-                                                <div class="message-text">
-                                                    <p>{{$message->body}}</p>
-                                                </div>
+                                        <div class="message-inner">
+                                            <div class="message-body">
+                                                <div class="message-content">
+                                                    <div class="message-text">
+                                                        <p>{{ $message->body }}</p>
+                                                    </div>
 
-                                                <!-- Dropdown -->
-                                                <div class="message-action">
-                                                    <div class="dropdown">
-                                                        <a class="icon text-muted" href="#" role="button"
-                                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                height="24" viewBox="0 0 24 24" fill="none"
-                                                                stroke="currentColor" stroke-width="2"
-                                                                stroke-linecap="round" stroke-linejoin="round"
-                                                                class="feather feather-more-vertical">
-                                                                <circle cx="12" cy="12" r="1">
-                                                                </circle>
-                                                                <circle cx="12" cy="5" r="1">
-                                                                </circle>
-                                                                <circle cx="12" cy="19" r="1">
-                                                                </circle>
-                                                            </svg>
-                                                        </a>
+                                                    <!-- Dropdown -->
+                                                    <div class="message-action">
+                                                        <div class="dropdown">
+                                                            <a class="icon text-muted" href="#"
+                                                                role="button" data-bs-toggle="dropdown"
+                                                                aria-expanded="false">
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                    width="24" height="24"
+                                                                    viewBox="0 0 24 24" fill="none"
+                                                                    stroke="currentColor" stroke-width="2"
+                                                                    stroke-linecap="round" stroke-linejoin="round"
+                                                                    class="feather feather-more-vertical">
+                                                                    <circle cx="12" cy="12" r="1">
+                                                                    </circle>
+                                                                    <circle cx="12" cy="5" r="1">
+                                                                    </circle>
+                                                                    <circle cx="12" cy="19" r="1">
+                                                                    </circle>
+                                                                </svg>
+                                                            </a>
 
-                                                        <ul class="dropdown-menu">
-                                                            <li>
-                                                                <a class="dropdown-item d-flex align-items-center"
-                                                                    href="#">
-                                                                    <span class="me-auto">Edit</span>
-                                                                    <div class="icon">
-                                                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                                            width="24" height="24"
-                                                                            viewBox="0 0 24 24" fill="none"
-                                                                            stroke="currentColor" stroke-width="2"
-                                                                            stroke-linecap="round"
-                                                                            stroke-linejoin="round"
-                                                                            class="feather feather-edit-3">
-                                                                            <path d="M12 20h9"></path>
-                                                                            <path
-                                                                                d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z">
-                                                                            </path>
-                                                                        </svg>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a class="dropdown-item d-flex align-items-center"
-                                                                    href="#">
-                                                                    <span class="me-auto">Reply</span>
-                                                                    <div class="icon">
-                                                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                                            width="24" height="24"
-                                                                            viewBox="0 0 24 24" fill="none"
-                                                                            stroke="currentColor" stroke-width="2"
-                                                                            stroke-linecap="round"
-                                                                            stroke-linejoin="round"
-                                                                            class="feather feather-corner-up-left">
-                                                                            <polyline points="9 14 4 9 9 4">
-                                                                            </polyline>
-                                                                            <path d="M20 20v-7a4 4 0 0 0-4-4H4"></path>
-                                                                        </svg>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <hr class="dropdown-divider">
-                                                            </li>
-                                                            <li>
-                                                                <a class="dropdown-item d-flex align-items-center text-danger"
-                                                                    href="#">
-                                                                    <span class="me-auto">Delete</span>
-                                                                    <div class="icon">
-                                                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                                            width="24" height="24"
-                                                                            viewBox="0 0 24 24" fill="none"
-                                                                            stroke="currentColor" stroke-width="2"
-                                                                            stroke-linecap="round"
-                                                                            stroke-linejoin="round"
-                                                                            class="feather feather-trash-2">
-                                                                            <polyline points="3 6 5 6 21 6">
-                                                                            </polyline>
-                                                                            <path
-                                                                                d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
-                                                                            </path>
-                                                                            <line x1="10" y1="11"
-                                                                                x2="10" y2="17">
-                                                                            </line>
-                                                                            <line x1="14" y1="11"
-                                                                                x2="14" y2="17">
-                                                                            </line>
-                                                                        </svg>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
+                                                            <ul class="dropdown-menu">
+                                                                <li>
+                                                                    <a class="dropdown-item d-flex align-items-center"
+                                                                        href="#">
+                                                                        <span class="me-auto">Edit</span>
+                                                                        <div class="icon">
+                                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                width="24" height="24"
+                                                                                viewBox="0 0 24 24" fill="none"
+                                                                                stroke="currentColor"
+                                                                                stroke-width="2"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round"
+                                                                                class="feather feather-edit-3">
+                                                                                <path d="M12 20h9"></path>
+                                                                                <path
+                                                                                    d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z">
+                                                                                </path>
+                                                                            </svg>
+                                                                        </div>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a class="dropdown-item d-flex align-items-center"
+                                                                        href="#">
+                                                                        <span class="me-auto">Reply</span>
+                                                                        <div class="icon">
+                                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                width="24" height="24"
+                                                                                viewBox="0 0 24 24" fill="none"
+                                                                                stroke="currentColor"
+                                                                                stroke-width="2"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round"
+                                                                                class="feather feather-corner-up-left">
+                                                                                <polyline points="9 14 4 9 9 4">
+                                                                                </polyline>
+                                                                                <path d="M20 20v-7a4 4 0 0 0-4-4H4">
+                                                                                </path>
+                                                                            </svg>
+                                                                        </div>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <hr class="dropdown-divider">
+                                                                </li>
+                                                                <li>
+                                                                    <a class="dropdown-item d-flex align-items-center text-danger"
+                                                                        href="#">
+                                                                        <span class="me-auto">Delete</span>
+                                                                        <div class="icon">
+                                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                width="24" height="24"
+                                                                                viewBox="0 0 24 24" fill="none"
+                                                                                stroke="currentColor"
+                                                                                stroke-width="2"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round"
+                                                                                class="feather feather-trash-2">
+                                                                                <polyline points="3 6 5 6 21 6">
+                                                                                </polyline>
+                                                                                <path
+                                                                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                                                                </path>
+                                                                                <line x1="10" y1="11"
+                                                                                    x2="10" y2="17">
+                                                                                </line>
+                                                                                <line x1="14" y1="11"
+                                                                                    x2="14" y2="17">
+                                                                                </line>
+                                                                            </svg>
+                                                                        </div>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
                                                     </div>
                                                 </div>
+
+
                                             </div>
 
-                                            
-                                        </div>
-
-                                        <div class="message-footer">
-                                            <span class="extra-small text-muted">{{ $message->created_at->diffForHumans() }}</span>
+                                            <div class="message-footer">
+                                                <span
+                                                    class="extra-small text-muted">{{ $message->created_at->diffForHumans() }}</span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                                 @endforeach
 
                                 <!-- Divider -->
                                 <div class="message-divider">
                                     <small class="text-muted">Monday, Sep 16</small>
                                 </div>
-                               
+
 
                             </div>
                         </div>
@@ -2530,61 +2537,68 @@
                         <!-- Chat: Files -->
 
                         <!-- Chat: Form -->
-                        <form class="chat-form rounded-pill bg-dark" data-emoji-form="">
-                            <div class="row align-items-center gx-0">
-                                <div class="col-auto">
-                                    <a href="#" class="btn btn-icon btn-link text-body rounded-circle"
-                                        id="dz-btn">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                            class="feather feather-paperclip">
-                                            <path
-                                                d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48">
-                                            </path>
-                                        </svg>
-                                    </a>
-                                </div>
 
-                                <div class="col">
-                                    <div class="input-group">
-                                        <textarea class="form-control px-0" placeholder="Type your message..." rows="1" data-emoji-input=""
-                                            data-autosize="true"></textarea>
-
-                                        <a href="#" class="input-group-text text-body pe-0"
-                                            data-emoji-btn="">
-                                            <span class="icon icon-lg">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                    height="24" viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                    stroke-linejoin="round" class="feather feather-smile">
-                                                    <circle cx="12" cy="12" r="10"></circle>
-                                                    <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
-                                                    <line x1="9" y1="9" x2="9.01"
-                                                        y2="9"></line>
-                                                    <line x1="15" y1="9" x2="15.01"
-                                                        y2="9"></line>
-                                                </svg>
-                                            </span>
+                            <form class="chat-form rounded-pill bg-dark" data-emoji-form="" method="post"
+                                action="{{ route('api.messages.store') }}">
+                                @csrf
+                                <input type="hidden" name="conversation_id" value="{{ $activeChat->id }}">
+                                <div class="row align-items-center gx-0">
+                                    <div class="col-auto">
+                                        <a href="#" class="btn btn-icon btn-link text-body rounded-circle"
+                                            id="dz-btn">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                class="feather feather-paperclip">
+                                                <path
+                                                    d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48">
+                                                </path>
+                                            </svg>
                                         </a>
                                     </div>
-                                </div>
 
-                                <div class="col-auto">
-                                    <button class="btn btn-icon btn-primary rounded-circle ms-5">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                            class="feather feather-send">
-                                            <line x1="22" y1="2" x2="11" y2="13">
-                                            </line>
-                                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                                        </svg>
-                                    </button>
+                                    <div class="col">
+                                        <div class="input-group">
+                                            <textarea name="message" class="form-control px-0" placeholder="Type your message..." rows="1"
+                                                data-emoji-input="" data-autosize="true"></textarea>
+
+                                            <a href="#" class="input-group-text text-body pe-0"
+                                                data-emoji-btn="">
+                                                <span class="icon icon-lg">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                        height="24" viewBox="0 0 24 24" fill="none"
+                                                        stroke="currentColor" stroke-width="2"
+                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                        class="feather feather-smile">
+                                                        <circle cx="12" cy="12" r="10"></circle>
+                                                        <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                                                        <line x1="9" y1="9" x2="9.01"
+                                                            y2="9"></line>
+                                                        <line x1="15" y1="9" x2="15.01"
+                                                            y2="9"></line>
+                                                    </svg>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-auto">
+                                        <button class="btn btn-icon btn-primary rounded-circle ms-5">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                class="feather feather-send">
+                                                <line x1="22" y1="2" x2="11"
+                                                    y2="13">
+                                                </line>
+                                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                            </svg>
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
-                        <!-- Chat: Form -->
+                            </form>
+                            <!-- Chat: Form -->
+
                     </div>
                     <!-- Chat: Footer -->
                 </div>
@@ -4991,10 +5005,27 @@
             </div>
         </div>
     </div>
+     <!-- Scripts -->
+     <script src="{{ asset('assets/js/vendor.js') }}"></script>
+     <script src="{{ asset('assets/js/template.js') }}"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+     <script src="{{ asset('assets/js/messenger.js') }}"></script>
+     <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
+     <script>
+      const userId = "{{ Auth::id() }}";
+      // Enable pusher logging - don't include this in production
+      Pusher.logToConsole = true;
 
-    <!-- Scripts -->
-    <script src="{{ asset('assets/js/vendor.js') }}"></script>
-    <script src="{{ asset('assets/js/template.js') }}"></script>
+      var pusher = new Pusher('eb9c3151a530a408319e', {
+        cluster: 'eu',
+        authEndpoint: "/broadcasting/auth",
+      });
+
+      var channel = pusher.subscribe(`presence-my-channel.`${userId});
+      channel.bind('new-message', function(data) {
+        addMessage(data.message.body)
+      });
+     </script>
 </body>
 
 </html>

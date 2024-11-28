@@ -39,4 +39,8 @@ class MessageCreated implements ShouldBroadcast
             ->first();
         return new PresenceChannel('Messenger.' . $other_user->id);
     }
+    public function broadcastAs()
+    {
+        return 'new-message';
+    }
 }
