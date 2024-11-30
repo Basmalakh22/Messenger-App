@@ -17,9 +17,16 @@ class MessagesController extends Controller
     public function index($id)
     {
         $user = Auth::user();
-        $conversation = $user->conversations()->findOrFail($id);
+        $conversation = $user->conversations()->with([
+            'lastMessage',
+             'participants' => function($bulider) use($user){
+                $bulider->where('id', '<>', $user->id);
+             }])->findOrFail($id);
 
-        return $conversation->messages()->paginate();
+        return [
+            'conversation' => $conversation,
+            'messages' => $conversation->messages()->with('user')->paginate()
+        ];
     }
 
 
@@ -77,7 +84,7 @@ class MessagesController extends Controller
                 'user_id' => $user->id,
                 'body' => $request->post('message'),
             ]);
-
+            dd($message);
             DB::statement('
             INSERT INTO recipients(user_id, message_id)
             SELECT user_id, ? FROM participants
@@ -88,6 +95,7 @@ class MessagesController extends Controller
                 'last_message_id' => $message->id,
             ]);
             DB::commit();
+            $message->load('user');
             broadcast(new MessageCreated($message));
 
             return $message;

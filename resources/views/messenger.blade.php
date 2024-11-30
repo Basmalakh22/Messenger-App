@@ -883,7 +883,7 @@
 
                                 <!-- Chats -->
                                 @foreach ($chats as $chat)
-                                    <div class="card-list">
+                                    <div class="card-list" id="chat-list">
                                         <!-- Card -->
                                         <a href="{{ route('messenger', $chat->id) }}" class="card border-0 text-reset">
                                             <div class="card-body">
@@ -2274,8 +2274,8 @@
                                             </div>
 
                                             <div class="col overflow-hidden">
-                                                <h5 class="text-truncate">Ollie Chandler</h5>
-                                                <p class="text-truncate">is typing<span class='typing-dots'><span>.</span><span>.</span><span>.</span></span></p>
+                                                <h5 class="text-truncate" id="chat-name"></h5>
+                                                <p class="text-truncate d-none">is typing<span class='typing-dots'><span>.</span><span>.</span><span>.</span></span></p>
                                             </div>
                                         </div>
                                     </div>
@@ -2541,7 +2541,7 @@
                             <form class="chat-form rounded-pill bg-dark" data-emoji-form="" method="post"
                                 action="{{ route('api.messages.store') }}">
                                 @csrf
-                                <input type="hidden" name="conversation_id" value="{{ $activeChat->id }}">
+                                <input type="hidden" name="conversation_id" value="">
                                 <div class="row align-items-center gx-0">
                                     <div class="col-auto">
                                         <a href="#" class="btn btn-icon btn-link text-body rounded-circle"
@@ -5006,6 +5006,7 @@
         </div>
     </div>
      <!-- Scripts -->
+     <script src="{{ asset('js/moment.js') }}"></script>
      <script src="{{ asset('assets/js/vendor.js') }}"></script>
      <script src="{{ asset('assets/js/template.js') }}"></script>
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -5023,7 +5024,7 @@
 
       var channel = pusher.subscribe(`presence-my-channel.`${userId});
       channel.bind('new-message', function(data) {
-        addMessage(data.message.body)
+        addMessage(data.message)
       });
      </script>
 </body>

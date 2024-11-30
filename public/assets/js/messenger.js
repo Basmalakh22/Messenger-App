@@ -3,7 +3,7 @@ $('.chat-form').on('submit', function (e) {
     e.preventDefault();
     let msg = $(this).find('textarea').val();
     $.post($(this).attr('action'), $(this).serialize(), function (response) {
-        addMessage(msg, 'message-out')
+        addMessage(response, 'message-out')
     });
 
     $(this).find('textarea').val('');

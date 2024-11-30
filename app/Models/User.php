@@ -32,6 +32,9 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+    protected $appends = [
+        'avatar-url'
+    ];
 
     /**
      * The attributes that should be cast.
@@ -60,5 +63,9 @@ class User extends Authenticatable
             'read_at',
             'deleted_at'
         ]);
+    }
+    public function getAvatarUrlAttribute()
+    {
+        return 'https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=' . $this->name;
     }
 }

@@ -12,7 +12,12 @@ class ConversationController extends Controller
     public function index()
     {
         $user = Auth::user();
-        return $user->conversations()->paginate();
+        return $user->conversations()->with([
+            'lastMessage',
+            'participants' => function ($bulider) use ($user) {
+                $bulider->where('id', '<>', $user->id);
+            }
+        ])->paginate();
     }
     public function show(Conversation $conversation)
     {
@@ -21,16 +26,16 @@ class ConversationController extends Controller
     public function addParticipant(Request $request, Conversation $conversation)
     {
         $request->validate([
-            'user_id' => ['required','int','exists:users,id']
+            'user_id' => ['required', 'int', 'exists:users,id']
         ]);
-        $conversation->participants()->attach($request->post('user_id'),[
-            'joined_at' =>Carbon::now()
+        $conversation->participants()->attach($request->post('user_id'), [
+            'joined_at' => Carbon::now()
         ]);
     }
     public function removeParticipant(Request $request, Conversation $conversation)
     {
         $request->validate([
-            'user_id' => ['required','int','exists:users,id']
+            'user_id' => ['required', 'int', 'exists:users,id']
         ]);
         $conversation->participants()->detach($request->post('user_id'));
     }
